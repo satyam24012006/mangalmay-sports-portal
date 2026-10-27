@@ -2,27 +2,25 @@ server:
   port: ${PORT:8080}
   forward-headers-strategy: framework
 
-  spring:
-    datasource:
-      url: ${DB_URL:jdbc:mysql://localhost:3306/sportsdb?createDatabaseIfNotExist=true}
-      username: ${DB_USER:root}
-      password: ${DB_PASSWORD:satyam1234}
-      driver-class-name: com.mysql.cj.jdbc.Driver
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/sportsdb?createDatabaseIfNotExist=true}
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 4MB
 
-    jpa:
-      hibernate:
-        ddl-auto: update
-      open-in-view: false
-
-    servlet:
-      multipart:
-        max-file-size: 3MB
-        max-request-size: 4MB
-
-  app:
-    jwt-secret: ${JWT_SECRET:}
-    jwt-expiry-hours: 12
-    upload-dir: ${UPLOAD_DIR:./uploads}
-    admin-email: ${ADMIN_EMAIL:admin@mangalmay.org}
-    admin-password: ${ADMIN_PASSWORD:admin@123}
-    cors-origin: ${CORS_ORIGIN:http://localhost:5173}
+app:
+  jwt-secret: ${JWT_SECRET}
+  jwt-expiry-hours: 12
+  upload-dir: ${UPLOAD_DIR:./uploads}
+  admin-email: ${ADMIN_EMAIL:admin@mangalmay.org}
+  admin-password: ${ADMIN_PASSWORD:}
+  cors-origin: ${CORS_ORIGIN:http://localhost:5173}
